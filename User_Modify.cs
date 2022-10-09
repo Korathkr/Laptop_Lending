@@ -12,15 +12,15 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
 {
     public partial class User_Modify : Form
     {
-        public String Dept_ID = "";
-        public String Dept_Name = "";
-        public String Address1 = "";
-        public String Address2 = "";
-        public String Tell = "";
-        public String Email1 = "";
-        public String Email2 = "";
+        public String Dept_ID;
+        public String Dept_Name;
+        public String Address1;
+        public String Address2;
+        public String Tell;
+        public String Email1;
+        public String Email2;
         public String[] PW_Q = new String[2];
-        public String PW_A = "";
+        public String PW_A;
 
         public User_Modify()
         {
@@ -33,8 +33,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         /// <param name="e"></param>
         private void Dept_ID_TextBox_TextChanged(object sender, EventArgs e)
         {
-            Dept_ID = Dept_ID_TextBox.Text;
-            User_Modify_config.Dept_ID = Dept_ID;
+            User_Modify_config.Dept_ID = Dept_ID_TextBox.Text;
         }
 
         /// <summary>
@@ -44,8 +43,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         /// <param name="e"></param>
         private void Dept_Name_TextBox_TextChanged(object sender, EventArgs e)
         {
-            Dept_Name = Dept_Name_TextBox.Text;
-            User_Modify_config.Dept_Name = Dept_Name;
+            User_Modify_config.Dept_Name = Dept_Name_TextBox.Text;
         }
 
         /// <summary>
@@ -55,8 +53,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         /// <param name="e"></param>
         private void Address1_TextBox_TextChanged(object sender, EventArgs e)
         {
-            Address1 = Address1_TextBox.Text;
-            User_Modify_config.Address1 = Address1;
+            User_Modify_config.Address1 = Address1_TextBox.Text;
         }
 
         /// <summary>
@@ -66,8 +63,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         /// <param name="e"></param>
         private void Address2_TextBox_TextChanged(object sender, EventArgs e)
         {
-            Address2 = Address2_TextBox.Text;
-            User_Modify_config.Address2 = Address2;
+            User_Modify_config.Address2 = Address2_TextBox.Text;
         }
 
         /// <summary>
@@ -77,8 +73,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         /// <param name="e"></param>
         private void Tell_TextBox_TextChanged(object sender, EventArgs e)
         {
-            Tell = Tell_TextBox.Text;
-            User_Modify_config.TELL = Tell;
+            User_Modify_config.TELL = Tell_TextBox.Text;
         }
 
         /// <summary>
@@ -89,6 +84,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         private void PW_Check_Q_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             PW_Q[0] = PW_Check_Q_ComboBox.Text;
+            User_Modify_config.PW_Q[0] = PW_Q[0];
             if (PW_Q[0] == "직접입력")
             {
                 PW_Check_Q_TextBox.ReadOnly = false;
@@ -119,6 +115,38 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         {
             PW_A = PW_Check_A_TextBox.Text;
             User_Modify_config.PW_A = PW_A;
+        }
+
+        /// <summary>
+        /// 이메일 주소 입력 텍스트 박스
+        /// </summary>
+        private void Email1_TextBox_TextChanged(object sender, EventArgs e)
+        {
+            Email1 = Email1_TextBox.Text;
+        }
+
+        /// <summary>
+        /// 이메일 도메인 입력 텍스트 박스
+        /// </summary>
+        private void Email2_TextBox_TextChanged(object sender, EventArgs e)
+        {
+            Email2 = Email2_TextBox.Text;
+        }
+
+        /// <summary>
+        /// 이메일 도메인 선택
+        /// </summary>
+        private void Email2_Select_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Email2_Select.Text == "직접입력")
+            {
+                Email2_TextBox.ReadOnly = false;
+            }
+            else
+            {
+                Email2_TextBox.ReadOnly = true;
+                Email2 = Email2_Select.Text;
+            }
         }
 
         /// <summary>
@@ -198,9 +226,17 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             Dept_Name_TextBox.Text = User_Modify_config.Dept_Name;
             Address1_TextBox.Text = User_Modify_config.Address1;
             Address2_TextBox.Text = User_Modify_config.Address2;
-            int Email_index = User_Modify_config.Email.LastIndexOf('@');
-            Email1_TextBox.Text = User_Modify_config.Email.Substring(0, Email_index);
-            Email2_TextBox.Text = User_Modify_config.Email.Substring(Email_index + 1);
+            
+            if (User_Modify_config.Email == "")
+            {
+                Email1_TextBox.Text = "";
+            }
+            else
+            { 
+                int Email_index = User_Modify_config.Email.LastIndexOf('@');
+                Email1_TextBox.Text = User_Modify_config.Email.Substring(0, Email_index);
+                Email2_TextBox.Text = User_Modify_config.Email.Substring(Email_index + 1);
+            }
             Tell_TextBox.Text = User_Modify_config.TELL;
             if (User_Modify_config.PW_Q[0] == "직접입력")
             {
@@ -216,42 +252,6 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             }
         }
 
-        /// <summary>
-        /// 이메일 주소 입력 텍스트 박스
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Email1_TextBox_TextChanged(object sender, EventArgs e)
-        {
-            Email1 = Email1_TextBox.Text;
-        }
-
-        /// <summary>
-        /// 이메일 도메인 입력 텍스트 박스
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Email2_TextBox_TextChanged(object sender, EventArgs e)
-        {
-            Email2 = Email2_TextBox.Text;
-        }
-
-        /// <summary>
-        /// 이메일 도메인 선택
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void Email2_Select_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if(Email2_Select.Text == "직접입력")
-            {
-                Email2_TextBox.ReadOnly = false;
-            }
-            else
-            {
-                Email2_TextBox.ReadOnly = true;
-                Email2 = Email2_Select.Text;
-            }
-        }
+        
     }
 }

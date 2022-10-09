@@ -81,6 +81,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                     PW_Search_success pw = new PW_Search_success();
                     PW_Search_success.PW_QA[0] = PW_QA[0];
                     PW_Search_success.PW_QA[1] = PW_QA[1];
+                    PW_Search_success.PW_QA[2] = PW_QA[2];
                     PW_Reset.ID = ID;
                     this.Close();
                     pw.Show();

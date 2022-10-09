@@ -144,22 +144,32 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             // 
             // OK_Btn
             // 
+            this.OK_Btn.BackColor = System.Drawing.Color.Navy;
+            this.OK_Btn.FlatAppearance.BorderSize = 0;
+            this.OK_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OK_Btn.Font = new System.Drawing.Font("경기천년제목 Medium", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.OK_Btn.ForeColor = System.Drawing.Color.White;
             this.OK_Btn.Location = new System.Drawing.Point(124, 256);
             this.OK_Btn.Name = "OK_Btn";
             this.OK_Btn.Size = new System.Drawing.Size(68, 45);
             this.OK_Btn.TabIndex = 49;
             this.OK_Btn.Text = "확인";
-            this.OK_Btn.UseVisualStyleBackColor = true;
+            this.OK_Btn.UseVisualStyleBackColor = false;
             this.OK_Btn.Click += new System.EventHandler(this.OK_Btn_Click);
             // 
             // Cancel_Btn
             // 
+            this.Cancel_Btn.BackColor = System.Drawing.Color.Red;
+            this.Cancel_Btn.FlatAppearance.BorderSize = 0;
+            this.Cancel_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Cancel_Btn.Font = new System.Drawing.Font("경기천년제목 Medium", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Cancel_Btn.ForeColor = System.Drawing.Color.White;
             this.Cancel_Btn.Location = new System.Drawing.Point(212, 256);
             this.Cancel_Btn.Name = "Cancel_Btn";
             this.Cancel_Btn.Size = new System.Drawing.Size(68, 45);
             this.Cancel_Btn.TabIndex = 50;
             this.Cancel_Btn.Text = "취소";
-            this.Cancel_Btn.UseVisualStyleBackColor = true;
+            this.Cancel_Btn.UseVisualStyleBackColor = false;
             this.Cancel_Btn.Click += new System.EventHandler(this.Cancel_Btn_Click);
             // 
             // ID_Search
@@ -183,11 +193,10 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Location = new System.Drawing.Point(540, 250);
             this.MaximumSize = new System.Drawing.Size(400, 375);
             this.MinimumSize = new System.Drawing.Size(400, 375);
             this.Name = "ID_Search";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "아이디 찾기";
             this.ResumeLayout(false);
             this.PerformLayout();

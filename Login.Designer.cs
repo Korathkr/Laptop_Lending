@@ -45,8 +45,10 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             // 
             // Login_Btn
             // 
-            this.Login_Btn.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.Login_Btn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Login_Btn.BackColor = System.Drawing.Color.Navy;
+            this.Login_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Login_Btn.Font = new System.Drawing.Font("경기천년제목 Medium", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Login_Btn.ForeColor = System.Drawing.Color.White;
             this.Login_Btn.Location = new System.Drawing.Point(313, 146);
             this.Login_Btn.Name = "Login_Btn";
             this.Login_Btn.Size = new System.Drawing.Size(87, 76);
@@ -168,11 +170,10 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Controls.Add(this.ID_Input);
             this.Controls.Add(this.Login_Btn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Location = new System.Drawing.Point(540, 250);
             this.MaximumSize = new System.Drawing.Size(492, 359);
             this.MinimumSize = new System.Drawing.Size(492, 359);
             this.Name = "Login";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "로그인";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

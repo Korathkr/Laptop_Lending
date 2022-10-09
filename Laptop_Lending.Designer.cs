@@ -143,7 +143,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.agree_btn.Location = new System.Drawing.Point(20, 7);
             this.agree_btn.Name = "agree_btn";
             this.agree_btn.Size = new System.Drawing.Size(92, 22);
-            this.agree_btn.TabIndex = 18;
+            this.agree_btn.TabIndex = 1;
             this.agree_btn.TabStop = true;
             this.agree_btn.Text = "동의함";
             this.agree_btn.UseVisualStyleBackColor = true;
@@ -156,7 +156,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.disagree_btn.Location = new System.Drawing.Point(118, 8);
             this.disagree_btn.Name = "disagree_btn";
             this.disagree_btn.Size = new System.Drawing.Size(143, 21);
-            this.disagree_btn.TabIndex = 19;
+            this.disagree_btn.TabIndex = 2;
             this.disagree_btn.TabStop = true;
             this.disagree_btn.Text = "동의하지 않음";
             this.disagree_btn.UseVisualStyleBackColor = true;
@@ -200,7 +200,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Student_Number_TextBox.Location = new System.Drawing.Point(126, 278);
             this.Student_Number_TextBox.Name = "Student_Number_TextBox";
             this.Student_Number_TextBox.Size = new System.Drawing.Size(156, 25);
-            this.Student_Number_TextBox.TabIndex = 47;
+            this.Student_Number_TextBox.TabIndex = 3;
             this.Student_Number_TextBox.TextChanged += new System.EventHandler(this.Student_Number_TextBox_TextChanged);
             // 
             // Student_Number
@@ -226,7 +226,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Name_TextBox.Location = new System.Drawing.Point(413, 278);
             this.Name_TextBox.Name = "Name_TextBox";
             this.Name_TextBox.Size = new System.Drawing.Size(156, 25);
-            this.Name_TextBox.TabIndex = 50;
+            this.Name_TextBox.TabIndex = 4;
             this.Name_TextBox.TextChanged += new System.EventHandler(this.Name_TextBox_TextChanged);
             // 
             // label4
@@ -252,7 +252,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Email_TextBox.Location = new System.Drawing.Point(413, 326);
             this.Email_TextBox.Name = "Email_TextBox";
             this.Email_TextBox.Size = new System.Drawing.Size(156, 25);
-            this.Email_TextBox.TabIndex = 56;
+            this.Email_TextBox.TabIndex = 6;
             this.Email_TextBox.TextChanged += new System.EventHandler(this.Email_TextBox_TextChanged);
             // 
             // label6
@@ -278,7 +278,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Tell_TextBox.Location = new System.Drawing.Point(126, 326);
             this.Tell_TextBox.Name = "Tell_TextBox";
             this.Tell_TextBox.Size = new System.Drawing.Size(156, 25);
-            this.Tell_TextBox.TabIndex = 53;
+            this.Tell_TextBox.TabIndex = 5;
             this.Tell_TextBox.TextChanged += new System.EventHandler(this.Tell_TextBox_TextChanged);
             // 
             // label8
@@ -304,7 +304,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Address_TextBox.Location = new System.Drawing.Point(126, 373);
             this.Address_TextBox.Name = "Address_TextBox";
             this.Address_TextBox.Size = new System.Drawing.Size(443, 25);
-            this.Address_TextBox.TabIndex = 59;
+            this.Address_TextBox.TabIndex = 7;
             this.Address_TextBox.TextChanged += new System.EventHandler(this.Address_TextBox_TextChanged);
             // 
             // label11
@@ -330,7 +330,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Parent_Tell_TextBox.Location = new System.Drawing.Point(413, 434);
             this.Parent_Tell_TextBox.Name = "Parent_Tell_TextBox";
             this.Parent_Tell_TextBox.Size = new System.Drawing.Size(156, 25);
-            this.Parent_Tell_TextBox.TabIndex = 65;
+            this.Parent_Tell_TextBox.TabIndex = 9;
             this.Parent_Tell_TextBox.TextChanged += new System.EventHandler(this.Parent_Tell_TextBox_TextChanged);
             // 
             // label13
@@ -374,7 +374,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Parent_Address_TextBox.Location = new System.Drawing.Point(126, 484);
             this.Parent_Address_TextBox.Name = "Parent_Address_TextBox";
             this.Parent_Address_TextBox.Size = new System.Drawing.Size(443, 25);
-            this.Parent_Address_TextBox.TabIndex = 68;
+            this.Parent_Address_TextBox.TabIndex = 10;
             this.Parent_Address_TextBox.TextChanged += new System.EventHandler(this.Parent_Address_TextBox_TextChanged);
             // 
             // label17
@@ -427,7 +427,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.rental_date.Location = new System.Drawing.Point(126, 537);
             this.rental_date.Name = "rental_date";
             this.rental_date.Size = new System.Drawing.Size(200, 25);
-            this.rental_date.TabIndex = 74;
+            this.rental_date.TabIndex = 11;
             this.rental_date.ValueChanged += new System.EventHandler(this.rental_date_ValueChanged);
             // 
             // label22
@@ -445,7 +445,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.return_date.Location = new System.Drawing.Point(376, 537);
             this.return_date.Name = "return_date";
             this.return_date.Size = new System.Drawing.Size(200, 25);
-            this.return_date.TabIndex = 76;
+            this.return_date.TabIndex = 12;
             this.return_date.ValueChanged += new System.EventHandler(this.return_date_ValueChanged);
             // 
             // label23
@@ -567,7 +567,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Application_date.Location = new System.Drawing.Point(240, 754);
             this.Application_date.Name = "Application_date";
             this.Application_date.Size = new System.Drawing.Size(200, 25);
-            this.Application_date.TabIndex = 92;
+            this.Application_date.TabIndex = 15;
             this.Application_date.ValueChanged += new System.EventHandler(this.Application_date_ValueChanged);
             // 
             // label37
@@ -584,7 +584,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Application_Name.Location = new System.Drawing.Point(295, 795);
             this.Application_Name.Name = "Application_Name";
             this.Application_Name.Size = new System.Drawing.Size(145, 25);
-            this.Application_Name.TabIndex = 94;
+            this.Application_Name.TabIndex = 16;
             this.Application_Name.TextChanged += new System.EventHandler(this.Application_Name_TextChanged);
             // 
             // Application_Parent_Name
@@ -592,7 +592,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Application_Parent_Name.Location = new System.Drawing.Point(295, 840);
             this.Application_Parent_Name.Name = "Application_Parent_Name";
             this.Application_Parent_Name.Size = new System.Drawing.Size(145, 25);
-            this.Application_Parent_Name.TabIndex = 96;
+            this.Application_Parent_Name.TabIndex = 17;
             this.Application_Parent_Name.TextChanged += new System.EventHandler(this.Application_Parent_Name_TextChanged);
             // 
             // label38
@@ -617,12 +617,17 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             // 
             // Application_Btn
             // 
+            this.Application_Btn.BackColor = System.Drawing.Color.Navy;
+            this.Application_Btn.FlatAppearance.BorderSize = 0;
+            this.Application_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Application_Btn.Font = new System.Drawing.Font("경기천년제목 Medium", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Application_Btn.ForeColor = System.Drawing.Color.White;
             this.Application_Btn.Location = new System.Drawing.Point(494, 795);
             this.Application_Btn.Name = "Application_Btn";
             this.Application_Btn.Size = new System.Drawing.Size(75, 71);
-            this.Application_Btn.TabIndex = 98;
+            this.Application_Btn.TabIndex = 18;
             this.Application_Btn.Text = "신청";
-            this.Application_Btn.UseVisualStyleBackColor = true;
+            this.Application_Btn.UseVisualStyleBackColor = false;
             this.Application_Btn.Click += new System.EventHandler(this.Application_Btn_Click);
             // 
             // label40
@@ -648,7 +653,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Parent_Name_TextBox.Location = new System.Drawing.Point(126, 434);
             this.Parent_Name_TextBox.Name = "Parent_Name_TextBox";
             this.Parent_Name_TextBox.Size = new System.Drawing.Size(156, 25);
-            this.Parent_Name_TextBox.TabIndex = 62;
+            this.Parent_Name_TextBox.TabIndex = 8;
             this.Parent_Name_TextBox.TextChanged += new System.EventHandler(this.Parent_Name_TextBox_TextChanged);
             // 
             // Rental_Btn
@@ -672,7 +677,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Return_Btn.Name = "Return_Btn";
             this.Return_Btn.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Return_Btn.Size = new System.Drawing.Size(65, 21);
-            this.Return_Btn.TabIndex = 102;
+            this.Return_Btn.TabIndex = 14;
             this.Return_Btn.TabStop = true;
             this.Return_Btn.Text = "확인";
             this.Return_Btn.UseVisualStyleBackColor = true;
@@ -692,7 +697,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.panel2.Location = new System.Drawing.Point(534, 580);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(73, 37);
-            this.panel2.TabIndex = 104;
+            this.panel2.TabIndex = 13;
             // 
             // panel3
             // 
@@ -702,7 +707,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.panel3.Size = new System.Drawing.Size(73, 36);
             this.panel3.TabIndex = 105;
             // 
-            // Labtop_Lending
+            // Laptop_Lending
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -773,11 +778,10 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Location = new System.Drawing.Point(540, 20);
             this.MaximumSize = new System.Drawing.Size(680, 1028);
             this.MinimumSize = new System.Drawing.Size(680, 1028);
-            this.Name = "Labtop_Lending";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Name = "Laptop_Lending";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "노트북 대여";
             this.Load += new System.EventHandler(this.Labtop_Lending_Load);
             this.panel1.ResumeLayout(false);

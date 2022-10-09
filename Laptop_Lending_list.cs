@@ -17,11 +17,12 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         public Laptop_Lending_list()
         {
             InitializeComponent();
+            this.MaximizeBox = false;
             Laptop_Lending_list_SQL();
         }
 
         /// <summary>
-        /// 노트북 대여 목록
+        /// 노트북 대여 기록 조회 메서드
         /// </summary>
         public void Laptop_Lending_list_SQL()
         {
@@ -36,15 +37,29 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                     MySqlCommand command = new MySqlCommand(Query, connection);
                     MySqlDataReader table = command.ExecuteReader();
 
-                    int idx = 0;
+                    int i = 0;
                     while (table.Read())
                     {
-                        ListViewItem list = new ListViewItem((++idx).ToString());
+                        // 리스트 생성
+                        ListViewItem list = new ListViewItem((++i).ToString());
+                        // 이름 
                         list.SubItems.Add(table["Name"].ToString());
+                        // 학번
                         list.SubItems.Add(table["Student_Number"].ToString());
-                        list.SubItems.Add(table["Application_Date"].ToString());
-                        list.SubItems.Add(table["Rental_Date"].ToString());
-                        list.SubItems.Add(table["Return_Date"].ToString());
+                        // 신청 날짜 변환
+                        String A_Date = table["Application_Date"].ToString();
+                        list.SubItems.Add(A_Date.Substring(0, 10));
+                        // 대여 날짜 변환
+                        String Rental_Date = table["Rental_Date"].ToString();
+                        list.SubItems.Add(Rental_Date.Substring(0, 10));
+                        // 반납 날짜 변환
+                        String Return_Date = table["Return_Date"].ToString();
+                        list.SubItems.Add(Return_Date.Substring(0, 10));
+                        // 노트북 기종
+                        list.SubItems.Add(table["LAPTOP_TYPE"].ToString());
+                        // 승인 여부
+                        list.SubItems.Add(table["Approval"].ToString());
+                        // 리스트에 추가
                         Laptop_list.Items.Add(list);
                     }
                     connection.Close();

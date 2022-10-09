@@ -44,3 +44,10 @@ C:\Users\ky157\Desktop\C#\C# 프로젝트\소프트웨어콘텐츠계열 노트�
 C:\Users\ky157\Desktop\C#\C# 프로젝트\소프트웨어콘텐츠계열 노트북 대여 프로그램\obj\Debug\소프트웨어콘텐츠계열_노트북_대여_프로그램.Laptop_Lending.resources
 C:\Users\ky157\Desktop\C#\C# 프로젝트\소프트웨어콘텐츠계열 노트북 대여 프로그램\obj\Debug\소프트웨어콘텐츠계열_노트북_대여_프로그램.StartForm.resources
 C:\Users\ky157\Desktop\C#\C# 프로젝트\소프트웨어콘텐츠계열 노트북 대여 프로그램\obj\Debug\소프트웨어콘텐츠계열_노트북_대여_프로그램.Laptop_Lending_list.resources
+C:\Users\ky157\Desktop\C#\C# 프로젝트\소프트웨어콘텐츠계열 노트북 대여 프로그램\obj\Debug\소프트웨어콘텐츠계열_노트북_대여_프로그램.Admin_MainPage.resources
+C:\Users\ky157\Desktop\C#\C# 프로젝트\소프트웨어콘텐츠계열 노트북 대여 프로그램\obj\Debug\소프트웨어콘텐츠계열_노트북_대여_프로그램.Admin_User_Modify.resources
+C:\Users\ky157\Desktop\C#\C# 프로젝트\소프트웨어콘텐츠계열 노트북 대여 프로그램\obj\Debug\소프트웨어콘텐츠계열 노트북 대여 프로그램.csproj.ResolveComReference.cache
+C:\Users\ky157\Desktop\C#\C# 프로젝트\소프트웨어콘텐츠계열 노트북 대여 프로그램\obj\Debug\소프트웨어콘텐츠계열_노트북_대여_프로그램.Admin_User_Info.resources
+C:\Users\ky157\Desktop\C#\C# 프로젝트\소프트웨어콘텐츠계열 노트북 대여 프로그램\obj\Debug\소프트웨어콘텐츠계열_노트북_대여_프로그램.Admin_ID_Management.resources
+C:\Users\ky157\Desktop\C#\C# 프로젝트\소프트웨어콘텐츠계열 노트북 대여 프로그램\obj\Debug\소프트웨어콘텐츠계열_노트북_대여_프로그램.Admin_Approval.resources
+C:\Users\ky157\Desktop\C#\C# 프로젝트\소프트웨어콘텐츠계열 노트북 대여 프로그램\obj\Debug\소프트웨어콘텐츠계열_노트북_대여_프로그램.Admin_Rental_info.resources

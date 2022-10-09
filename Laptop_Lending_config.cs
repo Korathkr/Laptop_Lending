@@ -20,6 +20,8 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         public static String Rental_Date; // 대여 날짜
         public static String Return_Date; // 반납 날짜
         public static String Application_Date; // 신청 날짜
+        public static String LAPTOP_TYPE = "LG - 15U50P-LR2SK"; // 노트북 종류
+        public static String Approval = "미승인"; // 승인여부
 
         public static String Application_Name; // 신청자 이름
         public static String Application_Parent_Name; // 보호자 이름

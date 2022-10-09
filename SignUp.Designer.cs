@@ -97,12 +97,17 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             // 
             // ID_Check_Btn
             // 
+            this.ID_Check_Btn.BackColor = System.Drawing.Color.DimGray;
+            this.ID_Check_Btn.FlatAppearance.BorderSize = 0;
+            this.ID_Check_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ID_Check_Btn.Font = new System.Drawing.Font("경기천년제목 Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ID_Check_Btn.ForeColor = System.Drawing.Color.White;
             this.ID_Check_Btn.Location = new System.Drawing.Point(377, 41);
             this.ID_Check_Btn.Name = "ID_Check_Btn";
             this.ID_Check_Btn.Size = new System.Drawing.Size(88, 38);
             this.ID_Check_Btn.TabIndex = 2;
             this.ID_Check_Btn.Text = "중복확인";
-            this.ID_Check_Btn.UseVisualStyleBackColor = true;
+            this.ID_Check_Btn.UseVisualStyleBackColor = false;
             this.ID_Check_Btn.Click += new System.EventHandler(this.ID_Check_Btn_Click);
             // 
             // label2
@@ -119,7 +124,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Name_TextBox.Location = new System.Drawing.Point(215, 100);
             this.Name_TextBox.Name = "Name_TextBox";
             this.Name_TextBox.Size = new System.Drawing.Size(156, 25);
-            this.Name_TextBox.TabIndex = 4;
+            this.Name_TextBox.TabIndex = 3;
             this.Name_TextBox.TextChanged += new System.EventHandler(this.Name_TextBox_TextChanged);
             // 
             // label3
@@ -136,7 +141,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Student_Number_TextBox.Location = new System.Drawing.Point(215, 200);
             this.Student_Number_TextBox.Name = "Student_Number_TextBox";
             this.Student_Number_TextBox.Size = new System.Drawing.Size(156, 25);
-            this.Student_Number_TextBox.TabIndex = 7;
+            this.Student_Number_TextBox.TabIndex = 5;
             this.Student_Number_TextBox.TextChanged += new System.EventHandler(this.Student_Number_TextBox_TextChanged);
             // 
             // label4
@@ -150,12 +155,16 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             // 
             // Student_Check_Btn
             // 
+            this.Student_Check_Btn.BackColor = System.Drawing.Color.DimGray;
+            this.Student_Check_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Student_Check_Btn.Font = new System.Drawing.Font("경기천년제목 Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Student_Check_Btn.ForeColor = System.Drawing.Color.White;
             this.Student_Check_Btn.Location = new System.Drawing.Point(378, 192);
             this.Student_Check_Btn.Name = "Student_Check_Btn";
             this.Student_Check_Btn.Size = new System.Drawing.Size(50, 35);
-            this.Student_Check_Btn.TabIndex = 9;
+            this.Student_Check_Btn.TabIndex = 6;
             this.Student_Check_Btn.Text = "확인";
-            this.Student_Check_Btn.UseVisualStyleBackColor = true;
+            this.Student_Check_Btn.UseVisualStyleBackColor = false;
             this.Student_Check_Btn.Click += new System.EventHandler(this.Student_Number_Check_Click);
             // 
             // PW_TextBox
@@ -164,7 +173,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.PW_TextBox.Name = "PW_TextBox";
             this.PW_TextBox.PasswordChar = '*';
             this.PW_TextBox.Size = new System.Drawing.Size(156, 25);
-            this.PW_TextBox.TabIndex = 10;
+            this.PW_TextBox.TabIndex = 7;
             this.PW_TextBox.TextChanged += new System.EventHandler(this.PW_TextBox_TextChanged);
             // 
             // label5
@@ -191,7 +200,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.PW_Check_TextBox.Name = "PW_Check_TextBox";
             this.PW_Check_TextBox.PasswordChar = '*';
             this.PW_Check_TextBox.Size = new System.Drawing.Size(156, 25);
-            this.PW_Check_TextBox.TabIndex = 13;
+            this.PW_Check_TextBox.TabIndex = 8;
             this.PW_Check_TextBox.TextChanged += new System.EventHandler(this.PW_Check_TextBox_TextChanged);
             // 
             // label7
@@ -268,7 +277,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.PW_Check_Q_ComboBox.Location = new System.Drawing.Point(215, 350);
             this.PW_Check_Q_ComboBox.Name = "PW_Check_Q_ComboBox";
             this.PW_Check_Q_ComboBox.Size = new System.Drawing.Size(221, 23);
-            this.PW_Check_Q_ComboBox.TabIndex = 17;
+            this.PW_Check_Q_ComboBox.TabIndex = 9;
             this.PW_Check_Q_ComboBox.SelectedIndexChanged += new System.EventHandler(this.PW_Check_Q_ComboBox_SelectedIndexChanged);
             // 
             // PW_Check_Q_TextBox
@@ -276,7 +285,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.PW_Check_Q_TextBox.Location = new System.Drawing.Point(440, 350);
             this.PW_Check_Q_TextBox.Name = "PW_Check_Q_TextBox";
             this.PW_Check_Q_TextBox.Size = new System.Drawing.Size(219, 25);
-            this.PW_Check_Q_TextBox.TabIndex = 18;
+            this.PW_Check_Q_TextBox.TabIndex = 10;
             this.PW_Check_Q_TextBox.TextChanged += new System.EventHandler(this.PW_Check_Q_TextBox_TextChanged);
             // 
             // label9
@@ -293,40 +302,52 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.PW_Check_A_TextBox.Location = new System.Drawing.Point(215, 400);
             this.PW_Check_A_TextBox.Name = "PW_Check_A_TextBox";
             this.PW_Check_A_TextBox.Size = new System.Drawing.Size(219, 25);
-            this.PW_Check_A_TextBox.TabIndex = 20;
+            this.PW_Check_A_TextBox.TabIndex = 11;
             this.PW_Check_A_TextBox.TextChanged += new System.EventHandler(this.PW_Check_A_TextBox_TextChanged);
             // 
             // SignUp_OK_Btn
             // 
-            this.SignUp_OK_Btn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.SignUp_OK_Btn.BackColor = System.Drawing.Color.Navy;
+            this.SignUp_OK_Btn.FlatAppearance.BorderSize = 0;
+            this.SignUp_OK_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SignUp_OK_Btn.Font = new System.Drawing.Font("경기천년제목 Medium", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.SignUp_OK_Btn.ForeColor = System.Drawing.Color.White;
             this.SignUp_OK_Btn.Location = new System.Drawing.Point(264, 700);
             this.SignUp_OK_Btn.Name = "SignUp_OK_Btn";
             this.SignUp_OK_Btn.Size = new System.Drawing.Size(70, 40);
-            this.SignUp_OK_Btn.TabIndex = 22;
+            this.SignUp_OK_Btn.TabIndex = 13;
             this.SignUp_OK_Btn.Text = "확인";
-            this.SignUp_OK_Btn.UseVisualStyleBackColor = true;
+            this.SignUp_OK_Btn.UseVisualStyleBackColor = false;
             this.SignUp_OK_Btn.Click += new System.EventHandler(this.SignUp_OK_Btn_Click);
             // 
             // Reset_Btn
             // 
-            this.Reset_Btn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Reset_Btn.BackColor = System.Drawing.Color.DimGray;
+            this.Reset_Btn.FlatAppearance.BorderSize = 0;
+            this.Reset_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Reset_Btn.Font = new System.Drawing.Font("경기천년제목 Medium", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Reset_Btn.ForeColor = System.Drawing.Color.White;
             this.Reset_Btn.Location = new System.Drawing.Point(349, 700);
             this.Reset_Btn.Name = "Reset_Btn";
             this.Reset_Btn.Size = new System.Drawing.Size(87, 40);
-            this.Reset_Btn.TabIndex = 23;
+            this.Reset_Btn.TabIndex = 14;
             this.Reset_Btn.Text = "다시입력";
-            this.Reset_Btn.UseVisualStyleBackColor = true;
+            this.Reset_Btn.UseVisualStyleBackColor = false;
             this.Reset_Btn.Click += new System.EventHandler(this.Reset_Btn_Click);
             // 
             // Exit_Btn
             // 
-            this.Exit_Btn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Exit_Btn.BackColor = System.Drawing.Color.DimGray;
+            this.Exit_Btn.FlatAppearance.BorderSize = 0;
+            this.Exit_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Exit_Btn.Font = new System.Drawing.Font("경기천년제목 Medium", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Exit_Btn.ForeColor = System.Drawing.Color.White;
             this.Exit_Btn.Location = new System.Drawing.Point(449, 700);
             this.Exit_Btn.Name = "Exit_Btn";
             this.Exit_Btn.Size = new System.Drawing.Size(70, 40);
-            this.Exit_Btn.TabIndex = 24;
+            this.Exit_Btn.TabIndex = 15;
             this.Exit_Btn.Text = "취소";
-            this.Exit_Btn.UseVisualStyleBackColor = true;
+            this.Exit_Btn.UseVisualStyleBackColor = false;
             this.Exit_Btn.Click += new System.EventHandler(this.Exit_Btn_Click);
             // 
             // label10
@@ -493,7 +514,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Terms_Agreed.Location = new System.Drawing.Point(53, 657);
             this.Terms_Agreed.Name = "Terms_Agreed";
             this.Terms_Agreed.Size = new System.Drawing.Size(556, 19);
-            this.Terms_Agreed.TabIndex = 21;
+            this.Terms_Agreed.TabIndex = 12;
             this.Terms_Agreed.TabStop = true;
             this.Terms_Agreed.Text = "동의 거부 권리가 있다는 사실을 인지하였으며 개인정보수집에 동의 하십니까?";
             this.Terms_Agreed.UseVisualStyleBackColor = true;
@@ -505,7 +526,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.BirthDay_DateTimePicker.Location = new System.Drawing.Point(215, 150);
             this.BirthDay_DateTimePicker.Name = "BirthDay_DateTimePicker";
             this.BirthDay_DateTimePicker.Size = new System.Drawing.Size(200, 25);
-            this.BirthDay_DateTimePicker.TabIndex = 44;
+            this.BirthDay_DateTimePicker.TabIndex = 4;
             this.BirthDay_DateTimePicker.ValueChanged += new System.EventHandler(this.BirthDay_DateTimePicker_ValueChanged);
             // 
             // SignUp
@@ -559,11 +580,10 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Controls.Add(this.ID_TextBox);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Location = new System.Drawing.Point(540, 150);
             this.MaximumSize = new System.Drawing.Size(823, 813);
             this.MinimumSize = new System.Drawing.Size(823, 813);
             this.Name = "SignUp";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "학과 ID 신청";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);

@@ -17,7 +17,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             InitializeComponent();
             this.MaximizeBox = false;
         }
-
+        
         /// <summary>
         /// 로그인 버튼
         /// </summary>
@@ -40,12 +40,13 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             }
            
         }
+
         /// <summary>
         /// 아이디 입력 텍스트 박스
         /// </summary>
         private void ID_Input_TextChanged(object sender, EventArgs e)
         {
-            DBMySql.ID = ID_Input.Text; 
+            DBMySql.ID = ID_Input.Text;
         }
         /// <summary>
         /// 비밀번호 입력 텍스트 박스

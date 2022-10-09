@@ -489,35 +489,47 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             // 
             // Exit_Btn
             // 
-            this.Exit_Btn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Exit_Btn.BackColor = System.Drawing.Color.DimGray;
+            this.Exit_Btn.FlatAppearance.BorderSize = 0;
+            this.Exit_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Exit_Btn.Font = new System.Drawing.Font("경기천년제목 Medium", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Exit_Btn.ForeColor = System.Drawing.Color.White;
             this.Exit_Btn.Location = new System.Drawing.Point(453, 446);
             this.Exit_Btn.Name = "Exit_Btn";
             this.Exit_Btn.Size = new System.Drawing.Size(70, 40);
             this.Exit_Btn.TabIndex = 105;
             this.Exit_Btn.Text = "취소";
-            this.Exit_Btn.UseVisualStyleBackColor = true;
+            this.Exit_Btn.UseVisualStyleBackColor = false;
             this.Exit_Btn.Click += new System.EventHandler(this.Exit_Btn_Click);
             // 
             // Reset_Btn
             // 
-            this.Reset_Btn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Reset_Btn.BackColor = System.Drawing.Color.DimGray;
+            this.Reset_Btn.FlatAppearance.BorderSize = 0;
+            this.Reset_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Reset_Btn.Font = new System.Drawing.Font("경기천년제목 Medium", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Reset_Btn.ForeColor = System.Drawing.Color.White;
             this.Reset_Btn.Location = new System.Drawing.Point(353, 446);
             this.Reset_Btn.Name = "Reset_Btn";
             this.Reset_Btn.Size = new System.Drawing.Size(87, 40);
             this.Reset_Btn.TabIndex = 104;
             this.Reset_Btn.Text = "다시입력";
-            this.Reset_Btn.UseVisualStyleBackColor = true;
+            this.Reset_Btn.UseVisualStyleBackColor = false;
             this.Reset_Btn.Click += new System.EventHandler(this.Reset_Btn_Click);
             // 
             // Modifiy_OK_Btn
             // 
-            this.Modifiy_OK_Btn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Modifiy_OK_Btn.BackColor = System.Drawing.Color.Navy;
+            this.Modifiy_OK_Btn.FlatAppearance.BorderSize = 0;
+            this.Modifiy_OK_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Modifiy_OK_Btn.Font = new System.Drawing.Font("경기천년제목 Medium", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Modifiy_OK_Btn.ForeColor = System.Drawing.Color.White;
             this.Modifiy_OK_Btn.Location = new System.Drawing.Point(268, 446);
             this.Modifiy_OK_Btn.Name = "Modifiy_OK_Btn";
             this.Modifiy_OK_Btn.Size = new System.Drawing.Size(70, 40);
             this.Modifiy_OK_Btn.TabIndex = 103;
             this.Modifiy_OK_Btn.Text = "확인";
-            this.Modifiy_OK_Btn.UseVisualStyleBackColor = true;
+            this.Modifiy_OK_Btn.UseVisualStyleBackColor = false;
             this.Modifiy_OK_Btn.Click += new System.EventHandler(this.Modifiy_OK_Btn_Click);
             // 
             // label33
@@ -553,7 +565,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Email2_TextBox.TabIndex = 108;
             this.Email2_TextBox.TextChanged += new System.EventHandler(this.Email2_TextBox_TextChanged);
             // 
-            // User_Modifiy
+            // User_Modify
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -612,11 +624,10 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Controls.Add(this.ID_TextBox);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Location = new System.Drawing.Point(540, 250);
             this.MaximumSize = new System.Drawing.Size(818, 554);
             this.MinimumSize = new System.Drawing.Size(818, 554);
-            this.Name = "User_Modifiy";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.Name = "User_Modify";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "개인정보 수정";
             this.Load += new System.EventHandler(this.User_Modifiy_Load);
             this.ResumeLayout(false);

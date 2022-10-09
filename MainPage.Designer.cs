@@ -51,12 +51,16 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             // 
             // Logout_btn
             // 
+            this.Logout_btn.BackColor = System.Drawing.Color.DarkBlue;
+            this.Logout_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Logout_btn.Font = new System.Drawing.Font("경기천년제목 Medium", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Logout_btn.ForeColor = System.Drawing.Color.White;
             this.Logout_btn.Location = new System.Drawing.Point(78, 24);
             this.Logout_btn.Name = "Logout_btn";
             this.Logout_btn.Size = new System.Drawing.Size(83, 35);
             this.Logout_btn.TabIndex = 1;
             this.Logout_btn.Text = "로그아웃";
-            this.Logout_btn.UseVisualStyleBackColor = true;
+            this.Logout_btn.UseVisualStyleBackColor = false;
             this.Logout_btn.Click += new System.EventHandler(this.Logout_btn_Click);
             // 
             // User_Modify
@@ -95,8 +99,11 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             // 
             // Labtop_Lending_Btn
             // 
-            this.Labtop_Lending_Btn.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.Labtop_Lending_Btn.Font = new System.Drawing.Font("굴림", 9F);
+            this.Labtop_Lending_Btn.BackColor = System.Drawing.Color.SkyBlue;
+            this.Labtop_Lending_Btn.FlatAppearance.BorderSize = 0;
+            this.Labtop_Lending_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Labtop_Lending_Btn.Font = new System.Drawing.Font("경기천년제목V Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Labtop_Lending_Btn.ForeColor = System.Drawing.Color.White;
             this.Labtop_Lending_Btn.Location = new System.Drawing.Point(56, 125);
             this.Labtop_Lending_Btn.Name = "Labtop_Lending_Btn";
             this.Labtop_Lending_Btn.Size = new System.Drawing.Size(154, 83);
@@ -107,13 +114,16 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             // 
             // Labtop_Lending_Record_Btn
             // 
-            this.Labtop_Lending_Record_Btn.Font = new System.Drawing.Font("굴림", 9F);
+            this.Labtop_Lending_Record_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.Labtop_Lending_Record_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Labtop_Lending_Record_Btn.Font = new System.Drawing.Font("경기천년제목 Bold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Labtop_Lending_Record_Btn.ForeColor = System.Drawing.Color.White;
             this.Labtop_Lending_Record_Btn.Location = new System.Drawing.Point(258, 125);
             this.Labtop_Lending_Record_Btn.Name = "Labtop_Lending_Record_Btn";
             this.Labtop_Lending_Record_Btn.Size = new System.Drawing.Size(154, 83);
             this.Labtop_Lending_Record_Btn.TabIndex = 45;
             this.Labtop_Lending_Record_Btn.Text = "노트북 대여 기록";
-            this.Labtop_Lending_Record_Btn.UseVisualStyleBackColor = true;
+            this.Labtop_Lending_Record_Btn.UseVisualStyleBackColor = false;
             this.Labtop_Lending_Record_Btn.Click += new System.EventHandler(this.Labtop_Lending_Record_Btn_Click);
             // 
             // MainPage
@@ -130,11 +140,10 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Controls.Add(this.Logout_btn);
             this.Controls.Add(this.Name_Label);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Location = new System.Drawing.Point(540, 250);
             this.MaximumSize = new System.Drawing.Size(488, 294);
             this.MinimumSize = new System.Drawing.Size(488, 294);
             this.Name = "MainPage";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "메인 페이지";
             this.Load += new System.EventHandler(this.MainPage_Load);
             this.ResumeLayout(false);

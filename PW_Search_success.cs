@@ -12,22 +12,12 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
 {
     public partial class PW_Search_success : Form
     {
-        public static String[] PW_QA = new string[2];
+        public static String[] PW_QA = new string[3];
         public String PW_A;
         public PW_Search_success()
         {
             InitializeComponent();
             this.ControlBox = false;
-        }
-
-        /// <summary>
-        /// 비밀번호 찾기 질문 텍스트 박스
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PW_Check_Q_TextBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -48,7 +38,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         private void OK_Btn_Click(object sender, EventArgs e)
         {
             // 입력한 질문과 DB에 있는 질문이 일치하지 않을 경우
-            if(PW_A != PW_QA[1])
+            if(PW_A != PW_QA[2])
             {
                 MessageBox.Show("비밀번호 찾기 답변이 일치하지 않습니다.", "오류");
             }
@@ -66,7 +56,14 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         private void PW_Search_success_Load(object sender, EventArgs e)
         {
             // 비밀번호 찾기 질문
-            PW_Check_Q_TextBox.Text = $"{PW_QA[0]}";
+            if (PW_QA[0] == "")
+            {
+                PW_Check_Q_TextBox.Text = $"{PW_QA[1]}";
+            }
+            else
+            {
+                PW_Check_Q_TextBox.Text = $"{PW_QA[0]}";
+            }
         }
     }
 }

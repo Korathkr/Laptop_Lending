@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
 {
-    public class DBMySql : Form
+    public class DBMySql
     {
         public static String ID;
         public static String PW;
@@ -12,6 +12,43 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         public static String DB_PW;
         public static String DB_Name;
         public static String Student_Number;
+
+        /// <summary>
+        /// 회원가입 SQL 메서드
+        /// </summary>
+        /// <returns></returns>
+        public static bool SQL()
+        {
+            bool Check = false;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
+                {
+
+                    String Query1 = $"INSERT INTO USERS VALUES ('{SignUp_config.ID}', '{SignUp_config.Name}', '{SignUp_config.BirthDay}', '{SignUp_config.Student_Number}', '{SignUp_config.PW}', '{SignUp_config.PW_Q[0]}', '{SignUp_config.PW_Q[1]}', '{SignUp_config.PW_A}')";
+                    String Query2 = $"INSERT INTO USERS_INFORMATION VALUES ('{SignUp_config.ID}', '{SignUp_config.Name}', '{SignUp_config.BirthDay}', '{SignUp_config.Student_Number}','소프트웨어콘텐츠계열', '', '', '', '', '')";
+                    connection.Open();
+
+                    MySqlCommand command1 = new MySqlCommand(Query1, connection);
+                    MySqlCommand command2 = new MySqlCommand(Query2, connection);
+                    if (command1.ExecuteNonQuery() != 1 || command2.ExecuteNonQuery() != 1)
+                    {
+                        MessageBox.Show("Failed to insert data.");
+                        Check = false;
+                    }
+                    else
+                    {
+                        MessageBox.Show("ID 신청이 완료되었습니다!");
+                        Check = true;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("오류 내용 : " + e.Message, "오류");
+            }
+            return Check;
+        }
 
         /// <summary>
         /// 로그인 체크하는 SQL 메서드
@@ -70,9 +107,9 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         /// </summary>
         /// <param name="ID"></param>
         /// <returns></returns>
-        public static String ID_Check(String ID)
+        public static bool ID_Check(String ID)
         {
-            String id_check = "";
+            bool Check = false;
             try
             {
                 using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
@@ -86,13 +123,13 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                     if (table.HasRows)
                     {
                         MessageBox.Show("해당 아이디는 사용 중입니다.", "아이디 중복");
-                        id_check = "NO";
+                        Check = false;
 
                     }
                     else
                     {
                         MessageBox.Show("사용 가능한 아이디 입니다!!!", "사용 가능");
-                        id_check = "OK";
+                        Check = true;
                     }
                 }
             }
@@ -100,7 +137,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             {
                 MessageBox.Show("오류 내용 : " + e.Message, "오류!!");
             }
-            return id_check;
+            return Check;
         }
 
         /// <summary>
@@ -108,9 +145,9 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         /// </summary>
         /// <param name="Student_Number"></param>
         /// <returns></returns>
-        public static String Student_Number_Check(String Student_Number)
+        public static bool Student_Number_Check(String Student_Number)
         {
-            String student_number_check = "";
+            bool Check = false;
             try
             {
                 using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
@@ -124,12 +161,12 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                     if (table.HasRows)
                     {
                         MessageBox.Show("이미 존재하는 학번입니다.", "학번 중복");
-                        student_number_check = "NO";
+                        Check = false;
 
                     }
                     else
                     {
-                        student_number_check = "OK";
+                        Check = true;
                     }
                 }
             }
@@ -137,7 +174,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             {
                 MessageBox.Show("오류 내용 : " + e.Message, "오류!!");
             }
-            return student_number_check;
+            return Check;
         }
 
         /// <summary>
@@ -183,12 +220,12 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         /// <returns></returns>
         public static String[] PW_Search(String ID, String Name, String Student_Number)
         {
-            String[] PW_QA = new String[2];
+            String[] PW_QA = new String[3];
             try
             {
                 using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
                 {
-                    String Query = $"SELECT PASSWORD_QUESTION, PASSWORD_ANSWER FROM USERS WHERE ID = '{ID}' AND Name = '{Name}' AND Student_Number = '{Student_Number}'";
+                    String Query = $"SELECT PASSWORD_QUESTION1, PASSWORD_QUESTION2, PASSWORD_ANSWER FROM USERS WHERE ID = '{ID}' AND Name = '{Name}' AND Student_Number = '{Student_Number}'";
                     connection.Open();
 
                     MySqlCommand command = new MySqlCommand(Query, connection);
@@ -196,8 +233,9 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
 
                     while (table.Read())
                     {
-                        PW_QA[0] = table["PASSWORD_QUESTION"].ToString();
-                        PW_QA[1] = table["PASSWORD_ANSWER"].ToString();
+                        PW_QA[0] = table["PASSWORD_QUESTION1"].ToString();
+                        PW_QA[1] = table["PASSWORD_QUESTION2"].ToString();
+                        PW_QA[2] = table["PASSWORD_ANSWER"].ToString();
                     }
                     if (!table.HasRows)
                     {
@@ -325,12 +363,14 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                     {
                         Check = true;
                     }
+                    connection.Close();
                 }
             }
             catch (Exception e)
             {
                 MessageBox.Show("오류 내용 : " + e.Message, "오류!!");
             }
+
             return Check;
         }
 
@@ -345,19 +385,18 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             {
                 using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
                 {
-                    String Query1 = $"INSERT INTO `USERS_LAPTOP_LENDING` (STUDENT_NUMBER, NAME, TELL, EMAIL, ADDRESS, PARENT_NAME, PARENT_TELL, PARENT_ADDRESS, RENTAL_DATE, RETURN_DATE, APPLICATION_DATE) VALUES ('{Laptop_Lending_config.Student_Number}', '{Laptop_Lending_config.Name}', '{Laptop_Lending_config.TELL}', '{Laptop_Lending_config.Email}', '{Laptop_Lending_config.Address}', '{Laptop_Lending_config.Parent_Name}', '{Laptop_Lending_config.Parent_TELL}', '{Laptop_Lending_config.Parent_Address}',  '{Laptop_Lending_config.Rental_Date}', '{Laptop_Lending_config.Return_Date}', '{Laptop_Lending_config.Application_Date}')";
-                   // String Query2 = $"UPDATE `USERS_LAPTOP_LENDING` SET = '{Laptop_Lending_config.Student_Number}', '{Laptop_Lending_config.Name}', '{Laptop_Lending_config.TELL}', '{Laptop_Lending_config.Email}', '{Laptop_Lending_config.Address}', '{Laptop_Lending_config.Parent_Name}', '{Laptop_Lending_config.Parent_TELL}', '{Laptop_Lending_config.Parent_Address}',  '{Laptop_Lending_config.Rental_Date}', '{Laptop_Lending_config.Return_Date}', '{Laptop_Lending_config.Application_Date}' WHERE ID = '{ID}'";
+                    bool Insert_Check = false;
+                    String Query = $"INSERT INTO `USERS_LAPTOP_LENDING` (STUDENT_NUMBER, NAME, TELL, EMAIL, ADDRESS, PARENT_NAME, PARENT_TELL, PARENT_ADDRESS, RENTAL_DATE, RETURN_DATE, APPLICATION_DATE, Approval, LAPTOP_TYPE) VALUES ('{Laptop_Lending_config.Student_Number}', '{Laptop_Lending_config.Name}', '{Laptop_Lending_config.TELL}', '{Laptop_Lending_config.Email}', '{Laptop_Lending_config.Address}', '{Laptop_Lending_config.Parent_Name}', '{Laptop_Lending_config.Parent_TELL}', '{Laptop_Lending_config.Parent_Address}',  '{Laptop_Lending_config.Rental_Date}', '{Laptop_Lending_config.Return_Date}', '{Laptop_Lending_config.Application_Date}', '{Laptop_Lending_config.Approval}', '{Laptop_Lending_config.LAPTOP_TYPE}')";
                     connection.Open();
 
-                    MySqlCommand command = new MySqlCommand(Query1, connection);
-                    if (command.ExecuteNonQuery() != 1)
+                    MySqlCommand command = new MySqlCommand(Query, connection);
+                    if (command.ExecuteNonQuery() == 1)
                     {
-                        MessageBox.Show("Failed to insert data.");
-                        Check = false;
+                        Check = true;
                     }
                     else
                     {
-                        Check = true;
+                        Check = false;
                     }
                 }
             }
@@ -365,6 +404,69 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             {
                 MessageBox.Show("오류 내용 : " + e.Message);
             }   
+            return Check;
+        }
+
+        /// <summary>
+        /// 노트북 대여 중복 체크 메서드
+        /// </summary>
+        /// <returns></returns>
+        public static bool Laptop_Lending_Check_SQL()
+        {
+            String application_date = "";
+            String approval = "";
+            DateTime Rental_date;
+            DateTime Return_date;
+            bool Check = false;
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
+                {
+                    String Query = $"SELECT * FROM `USERS_LAPTOP_LENDING` WHERE STUDENT_NUMBER = '{Laptop_Lending_config.Student_Number}'";
+                    connection.Open();
+                    MySqlCommand command = new MySqlCommand(Query, connection);
+                    MySqlDataReader table = command.ExecuteReader();
+
+                    // 새로운 회원은 테이블에 데이터가 없기때문에 true로 처리
+                    if(table.HasRows == false)
+                    {
+                        Check = true;
+                    }
+                    while (table.Read())
+                    {
+                       application_date = table["Application_Date"].ToString();
+                       approval = table["Approval"].ToString();
+                       Rental_date = DateTime.Parse(table["Rental_Date"].ToString());
+                       Return_date = DateTime.Parse(table["Return_Date"].ToString());
+                        // DB에 있는 신청날짜가 동일하거나
+                       if (Laptop_Lending_config.Application_Date == application_date)
+                       {
+                            Check = false;
+                       }
+                       // 관리자로부터 승인이 안났거나
+                       else if(approval == "미승인")
+                       {
+                            Check = false;
+                       }
+                       // 대여 기간 내 중복 대여 방지 
+                       else if(DateTime.Compare(DateTime.Parse(Laptop_Lending_config.Rental_Date), Rental_date) != 1 ||
+                               DateTime.Compare(DateTime.Parse(Laptop_Lending_config.Return_Date), Return_date) != 1)
+                       {
+                            Check = false;
+                       }
+                       else
+                       {
+                            Check = true;
+                       }
+                    }
+                    table.Close();
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("오류 내용 : " + e.Message);
+            }
             return Check;
         }
     }

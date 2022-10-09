@@ -43,12 +43,16 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             // 
             // OK_Btn
             // 
+            this.OK_Btn.BackColor = System.Drawing.Color.Navy;
+            this.OK_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OK_Btn.Font = new System.Drawing.Font("경기천년제목 Medium", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.OK_Btn.ForeColor = System.Drawing.Color.White;
             this.OK_Btn.Location = new System.Drawing.Point(181, 223);
             this.OK_Btn.Name = "OK_Btn";
             this.OK_Btn.Size = new System.Drawing.Size(81, 50);
             this.OK_Btn.TabIndex = 3;
             this.OK_Btn.Text = "확인";
-            this.OK_Btn.UseVisualStyleBackColor = true;
+            this.OK_Btn.UseVisualStyleBackColor = false;
             this.OK_Btn.Click += new System.EventHandler(this.OK_Btn_Click);
             // 
             // PW_Check_Q_TextBox
@@ -57,7 +61,6 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.PW_Check_Q_TextBox.Name = "PW_Check_Q_TextBox";
             this.PW_Check_Q_TextBox.Size = new System.Drawing.Size(219, 25);
             this.PW_Check_Q_TextBox.TabIndex = 19;
-            this.PW_Check_Q_TextBox.TextChanged += new System.EventHandler(this.PW_Check_Q_TextBox_TextChanged);
             // 
             // PW_Check_A_TextBox
             // 
@@ -137,11 +140,10 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Controls.Add(this.PW_Check_Q_TextBox);
             this.Controls.Add(this.OK_Btn);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Location = new System.Drawing.Point(540, 250);
             this.MaximumSize = new System.Drawing.Size(475, 360);
             this.MinimumSize = new System.Drawing.Size(475, 360);
             this.Name = "PW_Search_success";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "비밀번호 찾기";
             this.Load += new System.EventHandler(this.PW_Search_success_Load);
             this.ResumeLayout(false);

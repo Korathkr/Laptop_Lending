@@ -22,7 +22,6 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         public MainPage_PW_Reset()
         {
             InitializeComponent();
-            this.ControlBox = false;
         }
         /* 개인정보보호 내부관리계획 
            *  제4장 개인정보의 기술적·관리적 보호조치
@@ -69,25 +68,32 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         /// <param name="e"></param>
         private void OK_Btn_Click(object sender, EventArgs e)
         {
-            if (regexclass.PW_Regex(PW) == false)
+            if (PW == "" || PW_Re == "")
             {
-                MessageBox.Show("소문자 또는 대문자 하나, 숫자 하나가 포함되어야 합니다.\n(8글자 이상 12글자 이하)", "오류");
-                PW_Check = "NO";
+                MessageBox.Show("공백이 있습니다.", "오류");
             }
-            else if (regexclass.PW_Regex(PW) == true)
+            else
             {
-                PW_Regex_Check = "OK";
-            }
-            if (PW_Check == "NO" || PW_Regex_Check == "NO")
-            {
-                MessageBox.Show("비밀번호를 다시 확인해주세요.", "오류");
-            }
-            if (PW_Check == "OK" && PW_Regex_Check == "OK")
-            {
-                if (DBMySql.PW_Reset(PW, ID) == true)
+                if (regexclass.PW_Regex(PW) == false)
                 {
-                    MessageBox.Show("비밀번호 변경 완료.");
-                    this.Close();
+                    MessageBox.Show("소문자 또는 대문자 하나, 숫자 하나가 포함되어야 합니다.\n(8글자 이상 12글자 이하)", "오류");
+                    PW_Check = "NO";
+                }
+                else if (regexclass.PW_Regex(PW) == true)
+                {
+                    PW_Regex_Check = "OK";
+                }
+                if (PW_Check == "NO" || PW_Regex_Check == "NO")
+                {
+                    MessageBox.Show("비밀번호를 다시 확인해주세요.", "오류");
+                }
+                if (PW_Check == "OK" && PW_Regex_Check == "OK")
+                {
+                    if (DBMySql.PW_Reset(PW, ID) == true)
+                    {
+                        MessageBox.Show("비밀번호 변경 완료.");
+                        this.Close();
+                    }
                 }
             }
         }

@@ -176,14 +176,17 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                 Laptop_Lending_config.TELL = Tell_TextBox.Text;
                 Laptop_Lending_config.Email = Email_TextBox.Text;
                 Laptop_Lending_config.Address = Address_TextBox.Text;
-                if (DBMySql.Laptop_Lending_SQL() == true)
+                if(DBMySql.Laptop_Lending_Check_SQL() == true)
                 {
-                    MessageBox.Show("신청이 완료되었습니다.", "신청완료");
-                    this.Close();
+                    if(DBMySql.Laptop_Lending_SQL() == true)
+                    {
+                        MessageBox.Show("신청이 완료되었습니다.", "신청완료");
+                        this.Close();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("입력하신 내용이 일치하지 않습니다.", "오류");
+                    MessageBox.Show("이미 대여 내역이 있거나, 승인 대기 중입니다.", "오류");
                 }
             }
         }

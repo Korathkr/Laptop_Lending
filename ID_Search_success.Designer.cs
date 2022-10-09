@@ -56,12 +56,17 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             // 
             // OK_Btn
             // 
+            this.OK_Btn.BackColor = System.Drawing.Color.Navy;
+            this.OK_Btn.FlatAppearance.BorderSize = 0;
+            this.OK_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OK_Btn.Font = new System.Drawing.Font("경기천년제목 Medium", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.OK_Btn.ForeColor = System.Drawing.Color.White;
             this.OK_Btn.Location = new System.Drawing.Point(162, 201);
             this.OK_Btn.Name = "OK_Btn";
             this.OK_Btn.Size = new System.Drawing.Size(81, 50);
             this.OK_Btn.TabIndex = 2;
             this.OK_Btn.Text = "확인";
-            this.OK_Btn.UseVisualStyleBackColor = true;
+            this.OK_Btn.UseVisualStyleBackColor = false;
             this.OK_Btn.Click += new System.EventHandler(this.OK_Btn_Click);
             // 
             // label10
@@ -93,11 +98,10 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Controls.Add(this.OK_Btn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.ID);
-            this.Location = new System.Drawing.Point(540, 250);
             this.MaximumSize = new System.Drawing.Size(451, 360);
             this.MinimumSize = new System.Drawing.Size(451, 360);
             this.Name = "ID_Search_success";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "아이디 찾기";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -1,9 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
@@ -31,7 +27,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                         MySqlCommand command1 = new MySqlCommand(Query1, connection);
                         MySqlCommand command2 = new MySqlCommand(Query2, connection);
                         MySqlCommand command3 = new MySqlCommand(Query3, connection);
-                        if (command1.ExecuteNonQuery() == 1 && command2.ExecuteNonQuery() == 1 && command3.ExecuteNonQuery() == 1)
+                        if (command1.ExecuteNonQuery() == 1 && command2.ExecuteNonQuery() == 1 || command3.ExecuteNonQuery() == 1)
                         {
                             MessageBox.Show("삭제가 완료되었습니다.", "삭제 완료");
                         }
@@ -54,12 +50,13 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         /// </summary>
         public static void User_info()
         {
+            DateTime DT;
             try
             {
                 using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
                 {
                     String Users_Query = $"SELECT * FROM USERS_INFORMATION WHERE Student_Number = '{Admin_Config.Student_Number}'";
-                    String User_Laptop_Lending_Query = $"SELECT * FROM USERS_LAPTOP_LENDING WHERE Student_Number = '{Admin_Config.Student_Number}'";
+                    String User_Laptop_Lending_Query = $"SELECT *, TIMESTAMPDIFF(Day, return_date, Date_Format(now(), '%Y-%m-%d')) AS late_day FROM USERS_LAPTOP_LENDING WHERE Student_Number = '{Admin_Config.Student_Number}'";
 
                     connection.Open();
 
@@ -70,6 +67,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
 
                     String Rental_Date = "";
                     String Return_Date = "";
+                    String Return_status = "";
                     while (table1.Read())
                     {
                         Admin_Config.ID = table1["ID"].ToString();
@@ -93,8 +91,21 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                         Rental_Date = table2["Rental_Date"].ToString();
                         Admin_Config.Rental_Date = Rental_Date.Substring(0, 10);
                         Return_Date = table2["Return_Date"].ToString();
+                        DT = DateTime.Parse(Return_Date);
                         Admin_Config.Return_Date = Return_Date.Substring(0, 10);
-                        Admin_Config.Late = table2["Return_Date"].ToString();
+                        Return_status = table2["RETURN_STATUS"].ToString();
+                        if (DateTime.Compare(DT, DateTime.Now) != 1 && Return_status == "반납")
+                        {
+                            Admin_Config.Late = "없음";
+                        }
+                        else if(DateTime.Compare(DT, DateTime.Now) == 1 && Return_status == "미반납")
+                        {
+                            Admin_Config.Late = "대출 중";
+                        }
+                        else
+                        {
+                            Admin_Config.Late = table2["late_day"].ToString() + "일째";
+                        }
                     }
                     if (table2.HasRows == false)
                     {
@@ -184,7 +195,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             {
                 using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
                 {
-                    String Query = $"UPDATE USERS_LAPTOP_LENDING SET APPROVAL = '승인' WHERE STUDENT_NUMBER = '{Admin_Approval.student_number}'";
+                    String Query = $"UPDATE USERS_LAPTOP_LENDING SET APPROVAL = '승인' WHERE STUDENT_NUMBER = '{Admin_Approval.student_number}' And Application_date = '{Admin_Approval.application_date}'";
                     connection.Open();
 
                     DialogResult dr = MessageBox.Show("승인하시겠습니까?", "승인", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
@@ -227,7 +238,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             {
                 using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
                 {
-                    String Query = $"UPDATE USERS_LAPTOP_LENDING SET APPROVAL = '미승인' WHERE STUDENT_NUMBER = '{Admin_Approval.student_number}'";
+                    String Query = $"UPDATE USERS_LAPTOP_LENDING SET APPROVAL = '미승인' WHERE STUDENT_NUMBER = '{Admin_Approval.student_number}' And Application_date = '{Admin_Approval.application_date}'";
                     connection.Open();
 
                     DialogResult dr = MessageBox.Show("승인 취소하시겠습니까?", "승인 취소", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
@@ -249,6 +260,92 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                             else
                             {
                                 MessageBox.Show("승인 취소에 실패했습니다.", "승인 취소 실패");
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("오류 내용 : " + e.Message);
+            }
+        }
+
+        /// <summary>
+        /// 노트북 반납 SQL
+        /// </summary>
+        public static void User_Laptop_Return_SQL()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
+                {
+                    String Query = $"UPDATE USERS_LAPTOP_LENDING SET Return_Status = '반납' WHERE STUDENT_NUMBER = '{Admin_Approval.student_number}' And Application_date = '{Admin_Approval.application_date}'";
+                    connection.Open();
+
+                    DialogResult dr = MessageBox.Show("반납하시겠습니까?", "반납", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                    if (dr == DialogResult.OK)
+                    {
+                        if (Admin_Approval.return_status == "반납")
+                        {
+                            MessageBox.Show("이미 반납되었습니다.", "반납 오류");
+                        }
+                        else
+                        {
+                            MySqlCommand command = new MySqlCommand(Query, connection);
+
+                            if (command.ExecuteNonQuery() == 1)
+                            {
+                                MessageBox.Show("반납 완료되었습니다.", "반납 완료");
+                            }
+                            else
+                            {
+                                MessageBox.Show("반납에 실패했습니다.", "반납 실패");
+                            }
+                        }
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("오류 내용 : " + e.Message);
+            }
+        }
+
+        /// <summary>
+        /// 노트북 반납 취소 SQL
+        /// </summary>
+        public static void User_Laptop_Return_Cancle_SQL()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
+                {
+                    String Query = $"UPDATE USERS_LAPTOP_LENDING SET Return_status = '미반납' WHERE STUDENT_NUMBER = '{Admin_Approval.student_number}' And Application_date = '{Admin_Approval.application_date}'";
+                    connection.Open();
+
+                    DialogResult dr = MessageBox.Show("반납 취소하시겠습니까?", "반납 취소", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+
+                    if (dr == DialogResult.OK)
+                    {
+                        if (Admin_Approval.return_status == "미반납")
+                        {
+                            MessageBox.Show("이미 미반납되었습니다.", "반납 오류");
+                        }
+                        else
+                        {
+                            MySqlCommand command = new MySqlCommand(Query, connection);
+
+                            if (command.ExecuteNonQuery() == 1)
+                            {
+                                MessageBox.Show("반납 취소되었습니다.", "반납 취소 완료");
+                            }
+                            else
+                            {
+                                MessageBox.Show("반납 취소에 실패했습니다.", "반납 취소 실패");
                             }
                         }
                     }

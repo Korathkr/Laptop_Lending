@@ -442,7 +442,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Late_TextBox.Location = new System.Drawing.Point(206, 490);
             this.Late_TextBox.Name = "Late_TextBox";
             this.Late_TextBox.ReadOnly = true;
-            this.Late_TextBox.Size = new System.Drawing.Size(46, 25);
+            this.Late_TextBox.Size = new System.Drawing.Size(61, 25);
             this.Late_TextBox.TabIndex = 166;
             // 
             // label15
@@ -611,6 +611,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Controls.Add(this.ID_TextBox);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(898, 600);
             this.MinimumSize = new System.Drawing.Size(898, 600);
             this.Name = "Admin_User_Info";

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-/** 개발일정 22-09-19 ~ ing
+/** 개발일정 22-09-19 ~ 22-10-12
  *  영남이공대학교 소프트웨어콘텐츠계열 3학년
  *  1805040 김준영
  */
@@ -12,6 +10,8 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
 {
     public partial class Login : Form
     {
+        public static bool Admin_Check = false;
+
         public Login()
         {
             InitializeComponent();
@@ -34,8 +34,17 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                     MainPage m = new MainPage();
                     MainPage.UserName = DBMySql.DB_Name;
                     MainPage.ID = DBMySql.ID;
-                    m.Show();
-                    this.Hide();
+                    if (Admin_Check == true)
+                    {
+                        Admin_MainPage Admin = new Admin_MainPage();
+                        Admin.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        m.Show();
+                        this.Hide();
+                    }
                 }
             }
            

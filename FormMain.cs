@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
@@ -16,7 +13,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Admin_MainPage());
+            Application.Run(new Login());
         }
     }
 }

@@ -1,14 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
@@ -17,6 +9,8 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
     {
         public static String student_number;
         public static String approval;
+        public static String return_status;
+        public static String application_date;
         String FilePath = "";
 
         public Admin_Approval()
@@ -39,7 +33,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             {
                 using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
                 {
-                    String Query = $"SELECT * FROM USERS_LAPTOP_LENDING WHERE APPROVAL LIKE '%승인%'";
+                    String Query = $"SELECT * FROM USERS_LAPTOP_LENDING WHERE APPROVAL = '미승인' OR RETURN_STATUS = '미반납' ORDER BY Student_Number, RETURN_STATUS";
                     connection.Open();
 
                     MySqlCommand command = new MySqlCommand(Query, connection);
@@ -53,12 +47,6 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                         ListViewItem list = new ListViewItem(i.ToString());
                         list.SubItems.Add(table["Student_Number"].ToString());
                         list.SubItems.Add(table["Name"].ToString());
-                        list.SubItems.Add(table["tell"].ToString());
-                        list.SubItems.Add(table["Email"].ToString());
-                        list.SubItems.Add(table["Address"].ToString());
-                        list.SubItems.Add(table["Parent_Name"].ToString());
-                        list.SubItems.Add(table["Parent_Tell"].ToString());
-                        list.SubItems.Add(table["Parent_Address"].ToString());
                         application_date = table["Application_date"].ToString();
                         list.SubItems.Add(application_date.Substring(0, 10));
                         rental_date = table["Rental_Date"].ToString();
@@ -66,6 +54,53 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                         list.SubItems.Add(rental_date.Substring(0, 10));
                         list.SubItems.Add(return_date.Substring(0, 10));
                         list.SubItems.Add(table["Approval"].ToString());
+                        list.SubItems.Add(table["Return_status"].ToString());
+                        list.SubItems.Add(table["Laptop_type"].ToString());
+                        Approval_list.Items.Add(list);
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("오류 내용 : " + e.Message);
+            }
+        }
+
+        /// <summary>
+        /// 지난 승인/반납 ID 리스트를 가져오는 SQL 메서드
+        /// </summary>
+        public void ID_Last_Approval_SQL()
+        {
+            String rental_date = "";
+            String return_date = "";
+            String application_date = "";
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
+                {
+                    String Query = $"SELECT * FROM USERS_LAPTOP_LENDING WHERE APPROVAL LIKE '%승인%' ORDER BY Student_Number, RETURN_STATUS";
+                    connection.Open();
+
+                    MySqlCommand command = new MySqlCommand(Query, connection);
+                    MySqlDataReader table = command.ExecuteReader();
+
+                    int i = 0;
+                    while (table.Read())
+                    {
+                        i++;
+                        // 리스트 생성
+                        ListViewItem list = new ListViewItem(i.ToString());
+                        list.SubItems.Add(table["Student_Number"].ToString());
+                        list.SubItems.Add(table["Name"].ToString());
+                        application_date = table["Application_date"].ToString();
+                        list.SubItems.Add(application_date.Substring(0, 10));
+                        rental_date = table["Rental_Date"].ToString();
+                        return_date = table["Return_Date"].ToString();
+                        list.SubItems.Add(rental_date.Substring(0, 10));
+                        list.SubItems.Add(return_date.Substring(0, 10));
+                        list.SubItems.Add(table["Approval"].ToString());
+                        list.SubItems.Add(table["Return_status"].ToString());
                         list.SubItems.Add(table["Laptop_type"].ToString());
                         Approval_list.Items.Add(list);
                     }
@@ -88,7 +123,10 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                 ListView.SelectedListViewItemCollection items = Approval_list.SelectedItems;
                 ListViewItem i = items[0];
                 student_number = i.SubItems[1].Text;
-                approval = i.SubItems[12].Text;
+                application_date = i.SubItems[3].Text;
+                approval = i.SubItems[7].Text;
+                return_status = i.SubItems[8].Text;
+                
             }
         }
 
@@ -134,7 +172,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             worksheet = (Excel.Worksheet)workbook.Sheets[1]; // 엑셀 Sheet 1부터 시작
 
             int nRow = this.Approval_list.Items.Count + 1;
-            int nCol = 14;
+            int nCol = 9;
             String[,] data = new String[nRow, nCol];
             for (int i = 0; i < nCol; i++)
             {
@@ -149,7 +187,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                 }
             }
 
-            String EndCell = "N" + nRow.ToString();
+            String EndCell = "H" + nRow.ToString();
             worksheet.Range["A1:" + EndCell].Value = data;
             workbook.SaveAs(FilePath, workbook.FileFormat, Type.Missing, Type.Missing, false, false,
                 Excel.XlSaveAsAccessMode.xlShared, false, false, Type.Missing, Type.Missing, Type.Missing);
@@ -171,6 +209,33 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         private void Approval_Cancle_Btn_Click(object sender, EventArgs e)
         {
             Admin_DBMySql.User_Laptop_Approval_Cancle_SQL();
+        }
+
+        /// <summary>
+        /// 반납 버튼
+        /// </summary>
+        private void Return_Btn_Click(object sender, EventArgs e)
+        {
+            Admin_DBMySql.User_Laptop_Return_SQL();
+        }
+
+        /// <summary>
+        /// 반납 취소 버튼
+        /// </summary>
+        private void Return_Cancle_Btn_Click(object sender, EventArgs e)
+        {
+            Admin_DBMySql.User_Laptop_Return_Cancle_SQL();
+        }
+
+        /// <summary>
+        /// 지난 승인/반납 목록 버튼
+        /// </summary>
+        private void Last_list_Btn_Click(object sender, EventArgs e)
+        {
+            Approval_list.Items.Clear();
+            ID_Last_Approval_SQL();
+            // 모든 열 사이즈 자동 조정
+            Approval_list.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
     }
 }

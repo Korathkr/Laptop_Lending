@@ -40,6 +40,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Laptop_type_list = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Approval_list = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Return_Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,7 +54,8 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Return_Date_list,
             this.Rental_Date_list,
             this.Laptop_type_list,
-            this.Approval_list});
+            this.Approval_list,
+            this.Return_Status});
             this.Laptop_list.HideSelection = false;
             this.Laptop_list.Location = new System.Drawing.Point(29, 181);
             this.Laptop_list.Name = "Laptop_list";
@@ -94,11 +96,11 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             // Laptop_type_list
             // 
             this.Laptop_type_list.Text = "기종";
-            this.Laptop_type_list.Width = 133;
+            this.Laptop_type_list.Width = 134;
             // 
             // Approval_list
             // 
-            this.Approval_list.Text = "승인여부";
+            this.Approval_list.Text = "승인 여부";
             this.Approval_list.Width = 72;
             // 
             // pictureBox1
@@ -110,6 +112,11 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
+            // 
+            // Return_Status
+            // 
+            this.Return_Status.Text = "반납 여부";
+            this.Return_Status.Width = 91;
             // 
             // Laptop_Lending_list
             // 
@@ -143,5 +150,6 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         private System.Windows.Forms.ColumnHeader Laptop_type_list;
         private System.Windows.Forms.ColumnHeader Approval_list;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ColumnHeader Return_Status;
     }
 }

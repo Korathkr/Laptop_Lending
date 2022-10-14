@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
 {
     class Laptop_Lending_config
     {
-        public static String Num; // AUTO_INCREMENT
         public static String Name; // 이름
         public static String Student_Number; // 학번
         public static String TELL; // 휴대폰
@@ -22,6 +17,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         public static String Application_Date; // 신청 날짜
         public static String LAPTOP_TYPE = "LG - 15U50P-LR2SK"; // 노트북 종류
         public static String Approval = "미승인"; // 승인여부
+        public static String Return_status = "미반납"; // 반납여부
 
         public static String Application_Name; // 신청자 이름
         public static String Application_Parent_Name; // 보호자 이름

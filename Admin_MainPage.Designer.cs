@@ -76,7 +76,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Approval_Btn.Name = "Approval_Btn";
             this.Approval_Btn.Size = new System.Drawing.Size(101, 39);
             this.Approval_Btn.TabIndex = 2;
-            this.Approval_Btn.Text = "승인 요청";
+            this.Approval_Btn.Text = "승인/반납";
             this.Approval_Btn.UseVisualStyleBackColor = false;
             this.Approval_Btn.Click += new System.EventHandler(this.Approval_Btn_Click);
             // 

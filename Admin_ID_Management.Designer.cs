@@ -48,6 +48,8 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Reset_Btn = new System.Windows.Forms.Button();
             this.ExcelSaveFile = new System.Windows.Forms.SaveFileDialog();
             this.ID_Info_Btn = new System.Windows.Forms.Button();
+            this.ID_Search_TextBox = new System.Windows.Forms.TextBox();
+            this.ID_Search_Btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ID_Management_list
@@ -189,7 +191,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Reset_Btn.FlatAppearance.BorderSize = 0;
             this.Reset_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Reset_Btn.Font = new System.Drawing.Font("경기천년제목 Medium", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Reset_Btn.Location = new System.Drawing.Point(410, 34);
+            this.Reset_Btn.Location = new System.Drawing.Point(803, 34);
             this.Reset_Btn.Name = "Reset_Btn";
             this.Reset_Btn.Size = new System.Drawing.Size(60, 42);
             this.Reset_Btn.TabIndex = 6;
@@ -216,12 +218,36 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.ID_Info_Btn.UseVisualStyleBackColor = false;
             this.ID_Info_Btn.Click += new System.EventHandler(this.ID_Info_Btn_Click);
             // 
+            // ID_Search_TextBox
+            // 
+            this.ID_Search_TextBox.Location = new System.Drawing.Point(400, 51);
+            this.ID_Search_TextBox.Name = "ID_Search_TextBox";
+            this.ID_Search_TextBox.Size = new System.Drawing.Size(147, 25);
+            this.ID_Search_TextBox.TabIndex = 8;
+            this.ID_Search_TextBox.TextChanged += new System.EventHandler(this.ID_Search_TextBox_TextChanged);
+            // 
+            // ID_Search_Btn
+            // 
+            this.ID_Search_Btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.ID_Search_Btn.FlatAppearance.BorderSize = 0;
+            this.ID_Search_Btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ID_Search_Btn.Font = new System.Drawing.Font("경기천년제목 Medium", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.ID_Search_Btn.Location = new System.Drawing.Point(553, 51);
+            this.ID_Search_Btn.Name = "ID_Search_Btn";
+            this.ID_Search_Btn.Size = new System.Drawing.Size(57, 25);
+            this.ID_Search_Btn.TabIndex = 9;
+            this.ID_Search_Btn.Text = "검색";
+            this.ID_Search_Btn.UseVisualStyleBackColor = false;
+            this.ID_Search_Btn.Click += new System.EventHandler(this.ID_Search_Btn_Click);
+            // 
             // Admin_ID_Management
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1043, 517);
+            this.Controls.Add(this.ID_Search_Btn);
+            this.Controls.Add(this.ID_Search_TextBox);
             this.Controls.Add(this.ID_Info_Btn);
             this.Controls.Add(this.Reset_Btn);
             this.Controls.Add(this.ExcelFile_Save_Btn);
@@ -230,12 +256,14 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Controls.Add(this.ID_Delete_Btn);
             this.Controls.Add(this.ID_Management_list);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1061, 564);
             this.MinimumSize = new System.Drawing.Size(1061, 564);
             this.Name = "Admin_ID_Management";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "[관리자] ID 관리";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -258,5 +286,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         private System.Windows.Forms.Button Reset_Btn;
         private System.Windows.Forms.SaveFileDialog ExcelSaveFile;
         private System.Windows.Forms.Button ID_Info_Btn;
+        private System.Windows.Forms.TextBox ID_Search_TextBox;
+        private System.Windows.Forms.Button ID_Search_Btn;
     }
 }

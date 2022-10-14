@@ -1,14 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.IO;
 using Excel = Microsoft.Office.Interop.Excel;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
@@ -16,12 +8,63 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
     public partial class Admin_ID_Management : Form
     {
         String FilePath = "";
+        String Name = "";
         public Admin_ID_Management()
         {
             InitializeComponent();
             ID_Management_SQL();
             // 모든 열 사이즈 자동 조정
             ID_Management_list.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+        }
+
+        /// <summary>
+        /// ID 검색 SQL 메서드
+        /// </summary>
+        public void ID_Search_SQL()
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
+                {
+                    String Search_Query = $"SELECT DISTINCT a.id, a.student_number, a.birth, b.ADDRESS1, b.ADDRESS2, b.email, b.tell, b.dept_id, b.dept_name, a.name " +
+                    "FROM USERS AS a  " +
+                    "INNER JOIN USERS_INFORMATION AS b " +
+                    "ON a.student_number = b.student_number " +
+                    $"WHERE a.Name Like '%{Name}%' " +
+                    "ORDER BY Student_Number";
+                    connection.Open();
+                    MySqlCommand command = new MySqlCommand(Search_Query, connection);
+                    MySqlDataReader table = command.ExecuteReader();
+
+                    String[] Address = new string[2];
+                    int i = 0;
+                    while (table.Read())
+                    {
+                        i++;
+                        // 리스트 생성
+                        ListViewItem list = new ListViewItem(i.ToString());
+                        list.SubItems.Add(table["ID"].ToString());
+                        list.SubItems.Add(table["Name"].ToString());
+                        list.SubItems.Add(table["Student_Number"].ToString());
+                        list.SubItems.Add(table["dept_id"].ToString());
+                        list.SubItems.Add(table["dept_name"].ToString());
+                        String Birth = table["Birth"].ToString();
+                        list.SubItems.Add(Birth.Substring(0, 10));
+                        list.SubItems.Add(table["tell"].ToString());
+                        Address[0] = table["Address1"].ToString();
+                        Address[1] = table["Address2"].ToString();
+                        list.SubItems.Add(Address[0] + " " + Address[1]);
+                        list.SubItems.Add(table["Email"].ToString());
+
+                        ID_Management_list.Items.Add(list);
+                    }
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("오류 내용 : " + ex.Message);
+            }
         }
         
         /// <summary>
@@ -38,9 +81,14 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                     "INNER JOIN USERS_INFORMATION AS b " +
                     "ON a.student_number = b.student_number " +
                     "ORDER BY Student_Number";
+                    String Search_Query = $"SELECT DISTINCT a.id, a.student_number, a.birth, b.ADDRESS1, b.ADDRESS2, b.email, b.tell, b.dept_id, b.dept_name, a.name " +
+                    "FROM USERS AS a  " +
+                    "INNER JOIN USERS_INFORMATION AS b " +
+                    "ON a.student_number = b.student_number " +
+                    $"WHERE a.Name = '{Name}' "+
+                    "ORDER BY Student_Number";
                     connection.Open();
-
-                    MySqlCommand command = new MySqlCommand(Query, connection);
+                    MySqlCommand command = new MySqlCommand(Query, connection);       
                     MySqlDataReader table = command.ExecuteReader();
 
                     String[] Address = new string[2];
@@ -196,5 +244,23 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             application.Quit();
         }
 
+        /// <summary>
+        /// 이름 검색 텍스트 박스
+        /// </summary>
+        private void ID_Search_TextBox_TextChanged(object sender, EventArgs e)
+        {
+            Name = ID_Search_TextBox.Text;
+        }
+
+        /// <summary>
+        /// 이름 검색 버튼
+        /// </summary>
+        private void ID_Search_Btn_Click(object sender, EventArgs e)
+        {
+            ID_Management_list.Items.Clear();
+            ID_Search_SQL();
+            // 모든 열 사이즈 자동 조정
+            ID_Management_list.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+        }
     }
 }

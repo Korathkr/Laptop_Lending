@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
@@ -77,6 +70,9 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             laptop_lending_list.Show();
         }
 
+        /// <summary>
+        /// 폼이 로드되고 화면에 나타나기 전 실행되는 메서드
+        /// </summary>
         private void MainPage_Load(object sender, EventArgs e)
         {
             Name_Label.Text = UserName + "님"; 

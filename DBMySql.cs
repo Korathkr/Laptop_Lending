@@ -61,6 +61,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                 using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
                 {
                     String Query = $"SELECT * FROM USERS WHERE ID = '{ID}' AND PASSWORD = '{PW}'";
+                    String Admin_Query = $"SELECT * FROM Administrator WHERE ID = '{ID}' AND PASSWORD = '{PW}'";
                     connection.Open();
 
                     MySqlCommand command = new MySqlCommand(Query, connection);
@@ -72,6 +73,23 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                         DB_PW = table["PASSWORD"].ToString();
                         DB_Name = table["Name"].ToString();
                         Student_Number = table["Student_Number"].ToString();
+                    }
+                    table.Close();
+                    if(table.HasRows == false)
+                    {
+                        MySqlCommand Admin_command = new MySqlCommand(Admin_Query, connection);
+                        MySqlDataReader Admin_table = Admin_command.ExecuteReader();
+                        while (Admin_table.Read())
+                        {
+                            DB_ID = Admin_table["ID"].ToString();
+                            DB_PW = Admin_table["PASSWORD"].ToString();
+                            DB_Name = "관리자";
+                            if (ID == DB_ID && PW == DB_PW)
+                            {
+                                Login.Admin_Check = true;
+                            }
+                        }
+                        Admin_table.Close();
                     }
                 }
                 if (ID != DB_ID && PW != DB_PW)
@@ -386,7 +404,17 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                 using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
                 {
                     bool Insert_Check = false;
-                    String Query = $"INSERT INTO `USERS_LAPTOP_LENDING` (STUDENT_NUMBER, NAME, TELL, EMAIL, ADDRESS, PARENT_NAME, PARENT_TELL, PARENT_ADDRESS, RENTAL_DATE, RETURN_DATE, APPLICATION_DATE, Approval, LAPTOP_TYPE) VALUES ('{Laptop_Lending_config.Student_Number}', '{Laptop_Lending_config.Name}', '{Laptop_Lending_config.TELL}', '{Laptop_Lending_config.Email}', '{Laptop_Lending_config.Address}', '{Laptop_Lending_config.Parent_Name}', '{Laptop_Lending_config.Parent_TELL}', '{Laptop_Lending_config.Parent_Address}',  '{Laptop_Lending_config.Rental_Date}', '{Laptop_Lending_config.Return_Date}', '{Laptop_Lending_config.Application_Date}', '{Laptop_Lending_config.Approval}', '{Laptop_Lending_config.LAPTOP_TYPE}')";
+                    String Query = $"INSERT INTO `USERS_LAPTOP_LENDING` " +
+                        $"(STUDENT_NUMBER, NAME, TELL, EMAIL, ADDRESS, PARENT_NAME," +
+                        $" PARENT_TELL, PARENT_ADDRESS, RENTAL_DATE, RETURN_DATE, APPLICATION_DATE, " +
+                        $"Approval, LAPTOP_TYPE, RETURN_STATUS) VALUES " +
+                        $"('{Laptop_Lending_config.Student_Number}', '{Laptop_Lending_config.Name}', " +
+                        $"'{Laptop_Lending_config.TELL}', '{Laptop_Lending_config.Email}', " +
+                        $"'{Laptop_Lending_config.Address}', '{Laptop_Lending_config.Parent_Name}', " +
+                        $"'{Laptop_Lending_config.Parent_TELL}', '{Laptop_Lending_config.Parent_Address}',  " +
+                        $"'{Laptop_Lending_config.Rental_Date}', '{Laptop_Lending_config.Return_Date}', " +
+                        $"'{Laptop_Lending_config.Application_Date}', '{Laptop_Lending_config.Approval}', " +
+                        $"'{Laptop_Lending_config.LAPTOP_TYPE}', '{Laptop_Lending_config.Return_status}')";
                     connection.Open();
 
                     MySqlCommand command = new MySqlCommand(Query, connection);
@@ -413,6 +441,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
         /// <returns></returns>
         public static bool Laptop_Lending_Check_SQL()
         {
+            String return_status = "";
             String application_date = "";
             String approval = "";
             DateTime Rental_date;
@@ -422,7 +451,8 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             {
                 using (MySqlConnection connection = new MySqlConnection($"Server={Config.Server};" + $"Port={Config.Port};" + $"Database={Config.Database};" + $"Uid={Config.UserID};" + $"Pwd={Config.UserPassword};"))
                 {
-                    String Query = $"SELECT * FROM `USERS_LAPTOP_LENDING` WHERE STUDENT_NUMBER = '{Laptop_Lending_config.Student_Number}'";
+                    String Query = $"SELECT * FROM `USERS_LAPTOP_LENDING` WHERE STUDENT_NUMBER = " +
+                                   $"'{Laptop_Lending_config.Student_Number}'";
                     connection.Open();
                     MySqlCommand command = new MySqlCommand(Query, connection);
                     MySqlDataReader table = command.ExecuteReader();
@@ -434,12 +464,19 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                     }
                     while (table.Read())
                     {
+                       return_status = table["Return_status"].ToString();
                        application_date = table["Application_Date"].ToString();
                        approval = table["Approval"].ToString();
                        Rental_date = DateTime.Parse(table["Rental_Date"].ToString());
                        Return_date = DateTime.Parse(table["Return_Date"].ToString());
+                     
+                        // 반납여부가 미반납일 경우
+                       if(return_status == "미반납")
+                       {
+                            Check = false;
+                       }
                         // DB에 있는 신청날짜가 동일하거나
-                       if (Laptop_Lending_config.Application_Date == application_date)
+                       else if (Laptop_Lending_config.Application_Date == application_date)
                        {
                             Check = false;
                        }

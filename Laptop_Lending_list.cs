@@ -1,12 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
@@ -19,6 +12,8 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             InitializeComponent();
             this.MaximizeBox = false;
             Laptop_Lending_list_SQL();
+            // 모든 열 사이즈 자동 조정
+            Laptop_list.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
         }
 
         /// <summary>
@@ -59,6 +54,8 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
                         list.SubItems.Add(table["LAPTOP_TYPE"].ToString());
                         // 승인 여부
                         list.SubItems.Add(table["Approval"].ToString());
+                        // 반납 여부
+                        list.SubItems.Add(table["Return_status"].ToString());
                         // 리스트에 추가
                         Laptop_list.Items.Add(list);
                     }

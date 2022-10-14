@@ -604,6 +604,7 @@ namespace 소프트웨어콘텐츠계열_노트북_대여_프로그램
             this.Controls.Add(this.ID_TextBox);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(818, 554);
             this.MinimumSize = new System.Drawing.Size(818, 554);
             this.Name = "Admin_User_Modify";
